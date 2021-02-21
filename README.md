@@ -4,7 +4,7 @@
 
 HTML `Creator` using `Python`
 
-![](readme_files/img2.svg)![](readme_files/img3.svg)![](readme_files/img4.svg)
+![](https://github.com/dbranquinho/pywpb/readme_files/img2.svg)![](https://github.com/dbranquinho/pywpb/readme_files/img3.svg)![](https://github.com/dbranquinho/pywpb/readme_files/img4.svg)
 
 
 **key features:**
@@ -16,6 +16,8 @@ HTML `Creator` using `Python`
 - Coloring text and styles separately
 - Personalised Footer
 - Automatically creates texto to Images and Tables
+- Embedded videos from your own site or from Youtube
+- Create Frames easily
 
 ## Where to use
 - Nicely to be used on embedded in Flask applications. You create a dynamic page very easy
@@ -317,7 +319,7 @@ b.w_table(df,alt_text='My Table without footer',foot=False)
 
 `Prints such a string:`
 
-![Table](readme_files/table_example.png)
+![Table](https://github.com/dbranquinho/pywpb/readme_files/table_example.png)
 
 <br>
 <hr>
