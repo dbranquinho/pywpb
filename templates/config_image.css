@@ -1,0 +1,3 @@
+        <strong> Image {{ct_img}}</strong> - {{alt_text}}<BR>
+        <img src="images/img_{{ct_img}}.png" alt="{{alt_text}}" 
+                width="{{width}}" height="{{height}}"><BR>	

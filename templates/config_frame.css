@@ -1,0 +1,7 @@
+    <p style="margin-bottom: {{margin_botton}}cm; line-height: {{line_height}}%">
+    <span class="sd-abs-pos" style="float: {{align}}; width: {{width}}px; 
+            border: {{border}}px solid {{solid}}; padding: {{padding}}cm; background: {{background}}">
+        <multicol cols="{{ncols}}" gutter="{{gutter}}" id="Frame{{frame_id}}" dir="ltr" width="{{width}}">
+            <p style="margin-bottom: {{margin_botton}}cm; line-height: {{line_height}}%">{{text_line}}</p>
+        </multicol>
+    </span>

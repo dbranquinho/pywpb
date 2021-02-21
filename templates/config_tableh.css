@@ -1,0 +1,11 @@
+        <table>
+            <tr>
+                <style>
+                    table, td, tr, th {
+                        text-align:{{align}}; border-collapse:{{collapse}};
+                        }
+                    table, tr, td {
+                        border: {{border_size}}px solid {{border_color}};
+                        }
+                </style>
+                <strong> Table {{ct_tbl}}</strong> - {{alt_text}}<BR>

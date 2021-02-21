@@ -1,0 +1,12 @@
+        <style>
+            footer {
+                text-align: {{align}};
+                padding={{padding}}px;
+                background-color: {{background-color}};
+                color: {{color}};
+            }
+        </style>
+        <footer>
+            <p>{{header}}<br>
+            <a href="{{link_email}}">{{name_email}}</a></p>
+        </footer>  
