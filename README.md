@@ -37,7 +37,7 @@ pip install pywpb
 
 ## Current Modules
 
-To use any Neublis module you must instantiates all of then using the follow command:
+To use any `PYWPB` module you must instantiates all of then using the follow command:
 
 ### **Header**
 
@@ -49,13 +49,13 @@ Create a new Web Page with a minimal configuration. You must run this step befor
 
 `sintax`:
 ```python
-from neublis import neublis as nb
+from pywpb import pywpb as wpb
 
-h = nb.header(charset='utf-8', 
+h = wpb.header(charset='utf-8', 
            page_size=[21.0, 29.7, 2.0],
            margin=[0.25, 115],
            background='transparent',
-           title='Neublis Page without Title')
+           title='pywpb Page without Title')
 ```
 The values above are default, but you can change to:
 
@@ -82,8 +82,8 @@ The values above are default, but you can change to:
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title>Neublis Page without Title</title>
-	<meta name="generator" content="neublis"/>
+	<title>pywpb Page without Title</title>
+	<meta name="generator" content="pywpb - Python Web Page Builder"/>
 	<meta name="created" content="2021/02/17T16:44:08"/>
 	<meta name="changed" content="00:00:00"/>
 	<style type="text/css">
@@ -98,9 +98,9 @@ The values above are default, but you can change to:
 
 `sintax`:
 ```python
-from neublis import neublis as nb
+from pywpb import pywpb as wpb
 
-b = nb.body(margin=0, line=100, 
+b = pwb.body(margin=0, line=100, 
          link='#000080', 
 		 vlink='#800000',
          lang='eng')
@@ -139,9 +139,9 @@ The `<h1>` to `<h6>` tags are used to define HTML headings.
 
 `sintax`:
 ```python
-from neublis import neublis as nb
+from pywpb import pywpb as wpb
 
-b = nb.body() # keeping default values for body
+b = wpb.body() # keeping default values for body
 
 b.h(text='Headings have no text', 
     size=5, background='white', 
@@ -183,9 +183,9 @@ If you want a text with different color, use this method to write a new text on 
 
 `Sintax:`
 ```python
-from neublis import neublis as nb
+from pywpb import pywpb as wpb
 
-b = nb.body() # keeping default values for body
+b = wpb.body() # keeping default values for body
 
 b.color_text(text='no text provided',
 			 color='black')
@@ -201,9 +201,9 @@ This method writes a text, any one that you provided in text argument.
 
 `Sintax`
 ```python
-from neublis import neublis as nb
+from pywpb import pywpb as wpb
 
-b = nb.body() # keeping default values for body
+b = wpb.body() # keeping default values for body
 
 b.w_text('another text to see line feed',3)
 ```
@@ -219,9 +219,9 @@ another text to see line feed<BR><BR><BR>
 
 `Sintax`
 ```python
-from neublis import neublis as nb
+from pywpb import pywpb as wpb
 
-b = nb.body() # keeping default values for bod
+b = wpb.body() # keeping default values for bod
 
 text = b.change_text_color(color='blue', text='testing text one changing color', text_to='one')
 ```
@@ -240,9 +240,9 @@ Made bold text.
 
 `Sintax`
 ```python
-from neublis import neublis as nb
+from pywpb import pywpb as wpb
 
-b = nb.body() # keeping default values for bod
+b = wpb.body() # keeping default values for bod
 
 text = b.bold_text(self, text='no text provided', text_to='text')
 ```
@@ -257,9 +257,9 @@ Made Italic text.
 
 `Sintax`
 ```python
-from neublis import neublis as nb
+from pywpb import pywpb as wpbb
 
-b = nb.body() # keeping default values for bod
+b = wpb.body() # keeping default values for bod
 
 text = b.italic_text(self, text='no text provided', text_to='text')
 ```
@@ -272,9 +272,9 @@ The `<hr>` element is most often displayed as a horizontal rule that is used to 
 
 `Sintax`
 ```python
-from neublis import neublis as nb
+from pywpb import pywpb as wpb
 
-b = nb.body() # keeping default values for bod
+b = wpb.body() # keeping default values for bod
 
 b.hline(height=1, border=0, color='gray', background='gray')
 ```
@@ -283,9 +283,9 @@ b.hline(height=1, border=0, color='gray', background='gray')
 
 `Sintax`
 ```python
-from neublis import neublis as nb
+from pywpb import pywpb as wpb
 
-b = nb.body() # keeping default values for bod
+b = wpb.body() # keeping default values for bod
 
 df = pd.DataFrame({ 'id': [1,2,3], 
 					'Elapsed_time': [11,21,31],
@@ -399,16 +399,16 @@ This method used to create an environment ways to input and output to your page 
 
 `sintax`:
 ```python
-from neublis import neublis as nb
+from pywpb import pywpb as wpb
 
-i = nb.wpIO()
+i = wpb.wpIO()
 ```
 
 There are no arguments to pass, but you will use the methods of that class.
 
 <hr>
 
-This module used to input and output all this that you create using Neublis. The Methods are:
+This module used to input and output all this that you create using pywpb. The Methods are:
 
 **Print Page**
 
@@ -416,10 +416,10 @@ If you want to see how your page was built, this method will show you all HTML t
 
 `sintax`:
 ```python
-from neublis import neublis as nb
+from pywpb import pywpb as wpb
 
-p = nb.creator('en')
-b = nb.body()
+p = wpb.creator('en')
+b = wpb.body()
 
 print_page(self, page=p, body=b, cfg_css=False):
 ```
@@ -435,9 +435,9 @@ You must write text on you page using `w_text` method.
 
 `sintax`:
 ```python
-from neublis import neublis as nb
+from pywpb import pywpb as wpb
 
-i = nb.wpIO()
+i = wpbnb.wpIO()
 text = i.load_text('path/file.txt')
 ```
 
