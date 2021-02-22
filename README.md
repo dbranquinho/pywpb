@@ -411,8 +411,12 @@ filename = 'test'
 h = wpb.header()
 b = wpb.body()
 
-b.ulist(header="Header text to list", itens=["item 1", 'item 2','item 3'])
-
+b.ulist(header="Header text to unordered list", itens=["item x", 'item y','item z'])
+b.olist(header="Header text to ordered list", itens=["item 1", 'item 2','item 3'])
+b.dlist(header="Header text to description list", 
+        itens=[["desc 1", 'item 1','item 2','item 3'],
+               ["desc 2", 'item a','item b']])
+               
 i = wpb.wpIO()
 i.write_file(filename,h,b)
 i.preview(filename)
