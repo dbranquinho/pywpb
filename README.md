@@ -18,6 +18,7 @@ HTML `Creator` using `Python`
 - Automatically creates texto to Images and Tables
 - Embedded videos from your own site or from Youtube
 - Create Frames easily
+- Ordered and Unordered and description lists in one command line
 
 ## Where to use
 - Nicely to be used on embedded in Flask applications. You create a dynamic page very easy
@@ -392,6 +393,31 @@ i.preview(filename)
         </script>
 ```
 <hr>
+
+#### Lists
+
+Lists allow developers to group a set of related items in lists. We have tree types of lists as follow.
+
+**Unordered List**
+
+The list items will be marked with bullets (small black circles) by default.
+
+
+```python
+from pywpb import pywpb as wpb
+
+filename = 'test'
+
+h = wpb.header()
+b = wpb.body()
+
+b.ulist(header="Header text to list", itens=["item 1", 'item 2','item 3'])
+
+i = wpb.wpIO()
+i.write_file(filename,h,b)
+i.preview(filename)
+```
+
 
 ### **wpIO (web page input and output)**
 

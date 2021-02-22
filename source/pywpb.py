@@ -261,6 +261,66 @@ class body:
         self.frame_tag = wpIO.read_template(self, 'frame')
         self.body = self.body + self.frame_tag
 
+    def ulist(self, header="Header text to list", itens=["item 1", 'item 2','item 3']):
+        
+        self.Lines = wpIO.read_template(self, 'ulist')
+        ct_line = 0
+        ct_itens = len(itens)
+        text = ""
+        self.w_text(text=header, line_feed=0)
+        for line in self.Lines.splitlines():
+            if ct_line == 0:
+                ct_line = ct_line + 1
+                text = text + line + '\n'
+                continue      
+            if ct_line == 1:
+                for i in range(ct_itens):
+                    text = text + line.replace('{{item}}', itens[i]) + '\n'
+                ct_line = ct_line + 1
+                continue      
+            if ct_line == 2:
+                text = text + line + '\n'
+                break
+        self.body = self.body + text
+
+    def olist(self, header="Header text to list", itens=["item 1", 'item 2','item 3']):
+        
+        self.Lines = wpIO.read_template(self, 'olist')
+        ct_line = 0
+        ct_itens = len(itens)
+        text = ""
+        self.w_text(text=header, line_feed=0)
+        for line in self.Lines.splitlines():
+            if ct_line == 0:
+                ct_line = ct_line + 1
+                text = text + line + '\n'
+                continue      
+            if ct_line == 1:
+                for i in range(ct_itens):
+                    text = text + line.replace('{{item}}', itens[i]) + '\n'
+                ct_line = ct_line + 1
+                continue      
+            if ct_line == 2:
+                text = text + line + '\n'
+                break
+        self.body = self.body + text
+
+    def dlist(self, header="Header text to description list", 
+                    itens=[["desc 1", 'item 1','item 2','item 3'],
+                           ["desc 2", 'item a','item b']]):
+        
+        file_text = wpIO.read_template(self, 'dlist')
+        lines = file_text.splitlines()
+        self.w_text(text=header, line_feed=0)
+        text = lines[0]
+        for i in range(len(itens)):
+            text = text + lines[1].replace('{{description}}', itens[i][0]) + '\n'
+            for j in range(1,len(itens[i])):
+                text = text + lines[2].replace('{{item}}', itens[i][j]) + '\n'
+        text = text + lines[3]
+        self.body = self.body + text
+
+
 class wpIO:
 
     def __init__(self):
@@ -294,7 +354,6 @@ class wpIO:
         file_read = file_read.to_string().split(' ')[-1]
         resource_path = '/'.join(('templates', file_read))
         filepath = pkg_resources.resource_filename(resource_package, resource_path)
-        print('[' + filepath + ']')
         text_file = open(filepath,"r")
         Lines = text_file.readlines()
         str = ""
@@ -313,7 +372,7 @@ class wpIO:
         file.close()
 
     def preview(self, filename):
-        webbrowser.open('file://' + os.path.realpath(filename) + '.html').read()
+        webbrowser.open('file://' + os.path.realpath(filename) + '.html')
 
     def load_text(self, file):
         text_file = open(file,'r')
