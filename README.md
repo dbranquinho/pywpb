@@ -4,7 +4,7 @@
 
 HTML `Creator` using `Python`
 
-![](https://raw.githubusercontent.com/dbranquinho/pywpb/master/readme_files/img2.svg)![](https://raw.githubusercontent.com/dbranquinho/pywpb/master/readme_files/img3.svg)![](https://raw.githubusercontent.com/dbranquinho/pywpb/master/readme_files/img4.svg)
+![](https://img.shields.io/badge/pypi-0.1.9-blue)![](https://img.shields.io/badge/python-3.7|3.8|3.9-lightblue)![](https://img.shields.io/badge/Licence-MIT-lightgray)![](https://img.shields.io/badge/status-alpha-orange)![](https://img.shields.io/badge/pipeline-passed-green)![](https://img.shields.io/badge/testing-passing-green)
 
 
 **key features:**
