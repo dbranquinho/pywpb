@@ -4,7 +4,7 @@
 
 HTML `Creator` using `Python`
 
-![](https://github.com/dbranquinho/pywpb/readme_files/img2.svg)![](https://github.com/dbranquinho/pywpb/readme_files/img3.svg)![](https://github.com/dbranquinho/pywpb/readme_files/img4.svg)
+![](https://raw.githubusercontent.com/dbranquinho/pywpb/master/readme_files/img2.svg)![](https://raw.githubusercontent.com/dbranquinho/pywpb/master/readme_files/img3.svg)![](https://raw.githubusercontent.com/dbranquinho/pywpb/master/readme_files/img4.svg)
 
 
 **key features:**
