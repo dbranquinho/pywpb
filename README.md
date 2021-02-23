@@ -22,6 +22,7 @@ HTML `Creator` using `Python`
 - Ordered and Unordered and description lists in one command line
 
 ## Where to use
+    
 - Nicely to be used on embedded in Flask applications. You create a dynamic page very easy
 - You can also create dynamic pages in your Django applications
 - If you have other applications working in a batch mode, you can create many dynamics pages in background

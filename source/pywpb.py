@@ -39,6 +39,7 @@ class header:
                  text_border=1,
                  text_padding=0.1,
                  text_logo='none'):
+                 
         resource_package = __name__
         resource_path = '/'.join(('templates', 'templates.dat'))
         filepath = pkg_resources.resource_filename(resource_package, resource_path)
