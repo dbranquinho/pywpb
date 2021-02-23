@@ -4,12 +4,13 @@
 
 HTML `Creator` using `Python`
 
-![](https://img.shields.io/badge/pypi-0.1.9-blue)![](https://img.shields.io/badge/python-3.7|3.8|3.9-lightblue)![](https://img.shields.io/badge/Licence-MIT-lightgray)![](https://img.shields.io/badge/status-alpha-orange)![](https://img.shields.io/badge/pipeline-passed-green)![](https://img.shields.io/badge/testing-passing-green)
+![](https://img.shields.io/badge/pypi-0.1.10-blue)![](https://img.shields.io/badge/python-3.7|3.8|3.9-lightblue)![](https://img.shields.io/badge/Licence-MIT-lightgray)![](https://img.shields.io/badge/status-alpha-orange)![](https://img.shields.io/badge/pipeline-passed-green)![](https://img.shields.io/badge/testing-passing-green)
 
 
-**key features:**
+**Main Features:**
 
 - Building a Header Page
+- Insert your `logo` picture over the top of page
 - Style to Body tag
 - Create Tables using dataframe pandas
 - Insert images from graph application such seaborn, matplotlib and any other

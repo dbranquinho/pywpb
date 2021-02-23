@@ -13,7 +13,32 @@ class header:
                  page_size=[21.0, 29.7, 2.0],
                  margin=[0.25, 115],
                  background='transparent',
-                 title='Neublis Page without Title'):
+                 title='Neublis Page without Title',
+                 logo=False,
+                 table_width=100,
+                 table_cellpadding1=4,
+                 table_cellpadding2=0,
+                 page_break_before='always',
+                 col_width=128,
+                 valign="top",
+                 td_width=50,
+                 td_border_top=1,
+                 td_border_bottom=1,
+                 td_border_left=1,
+                 td_border_right=1,
+                 td_padding_top=0.1,
+                 td_padding_bottom=0.1,
+                 td_padding_left=0.1,
+                 td_padding_right=0,
+                 logo_url_image='none',
+                 name_image='none',
+                 width_image=75,
+                 height_image=35,
+                 border_image=0,
+                 text_width=50,
+                 text_border=1,
+                 text_padding=0.1,
+                 text_logo='none'):
         resource_package = __name__
         resource_path = '/'.join(('templates', 'templates.dat'))
         filepath = pkg_resources.resource_filename(resource_package, resource_path)
@@ -30,6 +55,34 @@ class header:
         self.header = self.header.replace('{{background}}', background)
         self.header = self.header.replace('{{title}}', title)
 
+        if logo:
+            self.logo = wpIO.read_template(self, file='logo')
+            self.logo = self.logo.replace('{{table_width}}', str(table_width))
+            self.logo = self.logo.replace('{{table_cellpadding1}}', str(table_cellpadding1))
+            self.logo = self.logo.replace('{{table_cellpadding2}}', str(table_cellpadding2))
+            self.logo = self.logo.replace('{{page_break_before}}', page_break_before)
+            self.logo = self.logo.replace('{{col_width}}', str(col_width))
+            self.logo = self.logo.replace('{{valign}}', valign)
+            self.logo = self.logo.replace('{{td_width}}', str(td_width))
+            self.logo = self.logo.replace('{{td_border_top}}', str(td_border_top))
+            self.logo = self.logo.replace('{{td_border_left}}', str(td_border_left))
+            self.logo = self.logo.replace('{{td_border_right}}', str(td_border_right))
+            self.logo = self.logo.replace('{{td_border_bottom}}', str(td_border_bottom))
+            self.logo = self.logo.replace('{{td_padding_bottom}}', str(td_padding_bottom))
+            self.logo = self.logo.replace('{{td_padding_left}}', str(td_padding_left))
+            self.logo = self.logo.replace('{{td_padding_right}}', str(td_padding_right))
+            self.logo = self.logo.replace('{{logo_url_image}}', logo_url_image)
+            self.logo = self.logo.replace('{{name_image}}', name_image)
+            self.logo = self.logo.replace('{{valign}}', valign)
+            self.logo = self.logo.replace('{{width_image}}', str(width_image))
+            self.logo = self.logo.replace('{{height_image}}', str(height_image))
+            self.logo = self.logo.replace('{{text_width}}', str(text_width))
+            self.logo = self.logo.replace('{{text_border}}', str(text_border))
+            self.logo = self.logo.replace('{{text_padding}}', str(text_padding))
+            self.logo = self.logo.replace('{{text_logo}}', str(text_logo))
+
+        self.header = self.header + self.logo
+        
         if not os.path.exists('images'):
             os.mkdir('images')
         ct_img = len(os.listdir('images'))

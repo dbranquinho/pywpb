@@ -1,0 +1,18 @@
+		<table width="{{table_width}}%" cellpadding="table_cellpadding1}}" cellspacing="{{table_cellpadding2}}" style="page-break-before: {{page_break_before}}">
+			<col width="{{col_width}}*"/>
+			<col width="{{col_width}}*"/>
+			<tr valign="{{valign}}">
+				<td width="{{td_width}}%" style="border-top: {{td_border_top}}px solid #000000; border-bottom: {{td_border_bottom}}px solid #000000; 
+									   border-left: {{td_border_left}}px solid #000000; border-right: {{td_border_right}}; padding-top: {{td_padding_top}}cm; 
+									   padding-bottom: {{td_padding_bottom}}cm; padding-left: {{td_padding_left}}cm; padding-right: {{td_padding_bottom}}cm">
+					<p>
+						<img src="{{logo_url_image}}" name="{{name_image}}" width="{{width_image}}" height="{height_image}}" border="{{border_image}}"/>
+					</p>
+				</td>
+				<td width="{{text_width}}%" style="border: {{text_border}}px solid #000000; padding: {{text_padding}}cm">
+					<p>
+						{{text_logo}} 
+					</p>
+				</td>
+			</tr>
+		</table>
