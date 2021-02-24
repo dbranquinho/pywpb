@@ -4,7 +4,7 @@
 
 HTML `Creator` using `Python`
 
-![](https://img.shields.io/badge/pypi-0.1.10-blue)![](https://img.shields.io/badge/python-3.7|3.8|3.9-lightblue)![](https://img.shields.io/badge/Licence-MIT-lightgray)![](https://img.shields.io/badge/status-alpha-orange)![](https://img.shields.io/badge/pipeline-passed-green)![](https://img.shields.io/badge/testing-passing-green)
+![](https://img.shields.io/badge/pypi-0.1.12-blue)![](https://img.shields.io/badge/python-3.7|3.8|3.9-lightblue)![](https://img.shields.io/badge/Licence-MIT-lightgray)![](https://img.shields.io/badge/status-alpha-orange)![](https://img.shields.io/badge/pipeline-passed-green)![](https://img.shields.io/badge/testing-passing-green)
 
 
 **Main Features:**
@@ -562,6 +562,8 @@ i.preview(filename)
 <BR>
 <hr>
 <BR>
+
+
 ### **wpIO (web page input and output)**
 
 This method used to create an environment ways to input and output to your page created.
