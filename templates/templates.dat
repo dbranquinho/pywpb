@@ -1,6 +1,7 @@
 template;file
 body;config_body.css
-close;config_close.css
+close_body;config_close_body.css
+close_page;config_close_page.css
 color_text;config_color_text.css
 footer;config_footer.css
 h;config_h.css
@@ -27,3 +28,5 @@ ulist;config_ulist.css
 olist;config_olist.css
 dlist;config_dlist.css
 logo;config_logo.css
+form_submit;config_form_submit.css
+form_sign_up;config_form_sign_up.css

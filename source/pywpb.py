@@ -14,7 +14,7 @@ class header:
                  margin=[0.25, 115],
                  background='transparent',
                  title='Neublis Page without Title',
-                 logo=False,
+                 set_logo=False,
                  table_width=100,
                  table_cellpadding1=4,
                  table_cellpadding2=0,
@@ -56,7 +56,7 @@ class header:
         self.header = self.header.replace('{{background}}', background)
         self.header = self.header.replace('{{title}}', title)
 
-        if logo:
+        if set_logo:
             self.logo = wpIO.read_template(self, file='logo')
             self.logo = self.logo.replace('{{table_width}}', str(table_width))
             self.logo = self.logo.replace('{{table_cellpadding1}}', str(table_cellpadding1))
@@ -81,8 +81,9 @@ class header:
             self.logo = self.logo.replace('{{text_border}}', str(text_border))
             self.logo = self.logo.replace('{{text_padding}}', str(text_padding))
             self.logo = self.logo.replace('{{text_logo}}', str(text_logo))
-
-        self.header = self.header + self.logo
+            self.header = self.header + self.logo
+        else:
+            self.header = self.header
         
         if not os.path.exists('images'):
             os.mkdir('images')
@@ -187,7 +188,7 @@ class body:
         else:
             sum_shape = 0
 
-        if str(type(data)) != "none":
+        if str(type(data)) != "<class 'str'>":
             self.tableh = wpIO.read_template(self, 'tableh')
             self.tableh = self.tableh.replace('{{align}}', align)
             self.tableh = self.tableh.replace('{{collapse}}', collapse)
@@ -244,7 +245,7 @@ class body:
     def w_image(self, image='none', width=350, 
                       height=350, alt_text='no alt text was provided'):
 
-        if str(type(image)) == 'None':
+        if str(type(image)) == "<class 'str'>":
             raise ValueError('No image provided to create graph, I need one')
 
         if not os.path.exists('images'):
@@ -313,6 +314,18 @@ class body:
                 background='#ffffff', ncols=1, gutter=19, frame_id='none',
                 text_line='none'):
         self.frame_tag = wpIO.read_template(self, 'frame')
+        self.frame_tag = self.frame_tag.replace('{{margin_botton}}', str(margin_botton))
+        self.frame_tag = self.frame_tag.replace('{{line_height}}', str(line_height))
+        self.frame_tag = self.frame_tag.replace('{{align}}', align)
+        self.frame_tag = self.frame_tag.replace('{{width}}', str(width))
+        self.frame_tag = self.frame_tag.replace('{{border}}', str(border))
+        self.frame_tag = self.frame_tag.replace('{{padding}}', str(padding))
+        self.frame_tag = self.frame_tag.replace('{{background}}', str(background))
+        self.frame_tag = self.frame_tag.replace('{{ncols}}', str(ncols))
+        self.frame_tag = self.frame_tag.replace('{{ncols}}', str(ncols))
+        self.frame_tag = self.frame_tag.replace('{{gutter}}', str(gutter))
+        self.frame_tag = self.frame_tag.replace('{{frame_id}}', frame_id)
+        self.frame_tag = self.frame_tag.replace('{{text_line}}', str(text_line))
         self.body = self.body + self.frame_tag
 
     def ulist(self, header="Header text to list", itens=["item 1", 'item 2','item 3']):
@@ -374,6 +387,25 @@ class body:
         text = text + lines[3]
         self.body = self.body + text
 
+    def w_forms(self, form_id='none',text='none', url_privacy='none', bus_name='none', submit='none'):
+        if form_id == 'none':
+            raise ValueError('No Form ID was provided, I need one')
+        if url_privacy == 'none':
+            raise ValueError('No URL to privacy was provided, I need one to LGPD conformance')
+        if bus_name == 'none':
+            raise ValueError('No Business Name was provided, I need one to submit form')
+        if submit == 'none':
+            raise ValueError('No URL to submit was provided, I need one to submit form')
+        if text == 'none':
+            raise ValueError('No Text to form was provided, I need one to Create form')
+        
+        self.form_tag = wpIO.read_template(self, form_id)
+        self.form_tag = self.form_tag.replace('{{url_privacy}}', url_privacy) 
+        self.form_tag = self.form_tag.replace('{{bus_name}}', bus_name) 
+        self.form_tag = self.form_tag.replace('{{text}}', text) 
+        self.form_tag = self.form_tag.replace('{{submit}}', submit) 
+        
+        self.body = self.body + self.form_tag
 
 class wpIO:
 
@@ -384,17 +416,14 @@ class wpIO:
         self.df_template = pd.read_csv(filepath, sep=';')
 
     def parse(self, page='none', body='none', cfg_css='none'):
-
-        creator = str(type(page))
-        if creator == "<class 'str'>":
-            raise ValueError('Header not passed to be read')
-        text = page.header
-
-        tag_body = str(type(body))
-        if tag_body == "<class 'str'>":
-            raise ValueError('Tag Body not passed to be read')
         
-        text = text + body.body
+        text = ''
+
+        if str(type(page)) != "<class 'str'>":
+            text = page.header
+
+        if str(type(body)) != "<class 'str'>":
+            text = text + body.body
 
         return(text)
 
@@ -408,7 +437,13 @@ class wpIO:
         file_read = file_read.to_string().split(' ')[-1]
         resource_path = '/'.join(('templates', file_read))
         filepath = pkg_resources.resource_filename(resource_package, resource_path)
-        text_file = open(filepath,"r")
+        try:
+            text_file = open(filepath,"r")
+        except:
+            raise ValueError('Template not found!!!')
+
+        print('[' + file_read + ']')
+
         Lines = text_file.readlines()
         str = ""
         for line in Lines:
@@ -418,8 +453,12 @@ class wpIO:
 
     def write_file(self, filename, page='none', body='none', cfg_css='none', mode='w+'):
         text = self.parse(page, body, cfg_css)
-        close_page = wpIO.read_template(self, 'close') 
-        text = text + close_page
+        if str(type(body)) != "<class 'str'>":
+            close_body = wpIO.read_template(self, 'close_body') 
+            text = text + close_body
+        if str(type(page)) != "<class 'str'>":        
+            close_page = wpIO.read_template(self, 'close_page') 
+            text = text + close_page
         file2write = filename + '.html'
         file = open(file2write,mode) 
         file.write(text)

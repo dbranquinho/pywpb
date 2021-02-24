@@ -20,6 +20,7 @@ HTML `Creator` using `Python`
 - Embedded videos from your own site or from Youtube
 - Create Frames easily
 - Ordered and Unordered and description lists in one command line
+- Building Forms with one line command
 
 ## Where to use
     
@@ -36,7 +37,38 @@ HTML `Creator` using `Python`
 ```shell
 pip install pywpb
 ```
+
+<BR>
 <hr>
+<BR><BR>
+
+## Table of Contents
+
+  1. [Header](#Header)
+  2. [Body](#Body)
+  3. [Body Methods](#Body-Methods)
+      * [h (headings)](#h-(headings))
+      * [Text Color](#Text-Color)
+      * [Write a Text](#Write-a-Text)
+      * [Bold Text](#Bold-Text)
+      * [Italic Text](#Italic-Text)
+      * [Horizontal Line](#Horizontal-Line)
+      * [ Writing Table](#Writing-Table)
+      * [Incorporate YouTube Videos](#Incorporate-YouTube-Videos)
+      * [Your own Videos](#Your-own-Videos)
+      * [Creating Frames in your Web Page](#Creating-Frames-in-your-Web-Page)
+      * [Lists](#Lists)
+         * [Unordered List](#Unordered-List)
+         * [Ordered List](#Ordered-List)
+         * [Description List](#Description-List)
+      * [Frames](#Frames)
+      * [Building Forms](#Building-Forms)
+  4. [wpIO (web page input and output)](#wpIO-(web-page-input-and-output))
+      * [Print Page](#Print-Page)
+      * [Load File](#Load-File)
+      * [Preview](#Preview)
+
+
 
 ## Current Modules
 
@@ -46,8 +78,6 @@ To use any `PYWPB` module you must instantiates all of then using the follow com
 
 There is only one method to create a page. And you need to run it before anything else.
 
-### **Creator**
-
 Create a new Web Page with a minimal configuration. You must run this step before any other command. You can choose you lang, if ommited, the default lan will be english.
 
 `sintax`:
@@ -55,10 +85,35 @@ Create a new Web Page with a minimal configuration. You must run this step befor
 from pywpb import pywpb as wpb
 
 h = wpb.header(charset='utf-8', 
-           page_size=[21.0, 29.7, 2.0],
-           margin=[0.25, 115],
-           background='transparent',
-           title='pywpb Page without Title')
+                page_size=[21.0, 29.7, 2.0],
+                margin=[0.25, 115],
+                background='transparent',
+                title='Neublis Page without Title',
+                logo=False,
+                table_width=100,
+                table_cellpadding1=4,
+                table_cellpadding2=0,
+                page_break_before='always',
+                col_width=128,
+                valign="top",
+                td_width=50,
+                td_border_top=1,
+                td_border_bottom=1,
+                td_border_left=1,
+                td_border_right=1,
+                td_padding_top=0.1,
+                td_padding_bottom=0.1,
+                td_padding_left=0.1,
+                td_padding_right=0,
+                logo_url_image='none',
+                name_image='none',
+                width_image=75,
+                height_image=35,
+                border_image=0,
+                text_width=50,
+                text_border=1,
+                text_padding=0.1,
+                text_logo='none')
 ```
 The values above are default, but you can change to:
 
@@ -96,6 +151,7 @@ The values above are default, but you can change to:
 </head>
 
 ```
+After `logo` parameter, you can insert values to create a Header page with you logo and text as you wish. You can personalize your page using all features ahead. Remember: the variable `logo` must be changed to `True`.
 
 ### **Body**
 
@@ -321,8 +377,10 @@ b.w_table(df,alt_text='My Table without footer',foot=False)
 - If the last line of the table is a footer, this argument must be `True`.
 
 `Prints such a string:`
+Table 1 - My Table without footer
 
-![Table](https://github.com/dbranquinho/pywpb/readme_files/table_example.png)
+
+![Table](https://github.com/dbranquinho/pywpb/raw/master/readme_files/table_example.png)
 
 <br>
 <hr>
@@ -396,11 +454,43 @@ i.preview(filename)
 ```
 <hr>
 
-#### Lists
+#### **Creating Frames in your Web Page**
+
+On a web page, framing means that a website can be organized into frames. Each frame displays a different HTML document. Sidebar headers and menus do not move when the content frame is scrolled up and down. For developers, frameworks can also be convenient.
+
+If you want to create any other `pywpb` features into a frame, you create you file as you wish and load this file and write to a frame using the follow code.
+
+```python
+from pywpb import pywpb as wpb
+
+filename = 'test'
+
+h = wpb.header()
+b = wpb.body()
+i = wpb.wpIO()
+
+
+b.dlist(header="Header text to list", 
+        itens=[["desc 1", 'item 1','item 2','item 3'],
+               ["desc 2", 'item a','item b']])
+
+i.write_file(filename=filename,body=b)
+
+text = i.load_text('test.html')
+
+b.w_frame(frame_id="myframe1", text_line=text)
+
+i.write_file(filename,h,b)
+i.preview(filename)
+
+
+```
+
+#### **Lists**
 
 Lists allow developers to group a set of related items in lists. We have tree types of lists as follow.
 
-**Unordered List**
+##### **Unordered List**
 
 The list items will be marked with bullets (small black circles) by default.
 
@@ -423,8 +513,55 @@ i = wpb.wpIO()
 i.write_file(filename,h,b)
 i.preview(filename)
 ```
+##### **Unordered List**
+
+Change just only the call `ulist` to `olist`
+
+##### **Description List**
+
+Change just only the call `ulist` to `dlist`
+
+<BR>
+<hr>
+<BR>
+
+#### **Building Forms**
+
+There are many forms that can be created using `pywpb`. Many are created every day. So, we're going to show you some of them. In any case use the code bellow to build your own form. just change the `form_id` using the [List of the forms](#List-of-the-forms).
+
+**Registration Forms**
+
+```python
+from pywpb import pywpb as wpb
+
+filename = 'test'
+
+p = wpb.header('en')
+b = wpb.body()
+i = wpb.wpIO()
+
+b.w_forms(form_id='form_submit', text='Texto to form', url_privacy='https://mysite.com/Privacy Policy', bus_name='The Scientist', submit='https://mysite.com/execute_this_form')
 
 
+i.write_file(filename, page=p, body=b)
+i.preview(filename)
+
+```
+
+
+##### **List of the forms**
+
+| form_id  |  Description  | Parameters |
+| ------------------- | ------------------- | -- |
+|  form_submit |  Registration Forms | form_id +  text + url_privacy + bus_name|
+|  form_sign_up |  Contact Forms | form_id + text + url_privacy + bus_name |
+    
+
+
+
+<BR>
+<hr>
+<BR>
 ### **wpIO (web page input and output)**
 
 This method used to create an environment ways to input and output to your page created.
@@ -442,7 +579,7 @@ There are no arguments to pass, but you will use the methods of that class.
 
 This module used to input and output all this that you create using pywpb. The Methods are:
 
-**Print Page**
+#### **Print Page**
 
 If you want to see how your page was built, this method will show you all HTML tags in your file with text output.
 
@@ -452,15 +589,17 @@ from pywpb import pywpb as wpb
 
 p = wpb.creator('en')
 b = wpb.body()
+i = wpb.wpIO()
 
 print_page(self, page=p, body=b, cfg_css=False):
+
 ```
 
 If you have been calling commands that require CSS tags, then the `css_cfg` argument should be filled with True, but we will see that later.
 
 <hr>
 
-**Load File**
+#### **Load File**
 If you have a big text file to write on you page, this method is a best way to do this. After loaded, you can use the `text` to change colors of some words on the texto or put some words in bold or italic style.
 
 You must write text on you page using `w_text` method.
@@ -474,5 +613,54 @@ text = i.load_text('path/file.txt')
 ```
 
 <hr>
+
+#### **Write File**
+
+You can write your page in disk. It is usefull and necessary to reuse after creation.
+Just give the name without `html`. The write method wil do it for you.
+
+
+```python
+from pywpb import pywpb as wpb
+
+filename = 'path/myfile'
+
+p = wpb.creator('en')
+b = wpb.body()
+i = wpb.wpIO()
+
+i.write_file(filename, page=p, body=b)
+
+```
+
+The `page` and body as the same instance that you created before.
+
+
+<hr>
+
+#### **Preview**
+
+You can load the page created in you default browser with a single command line.
+
+
+```python
+from pywpb import pywpb as wpb
+
+filename = 'path/myfile'
+
+p = wpb.creator('en')
+b = wpb.body()
+i = wpb.wpIO()
+
+# you code building page here
+
+i.write_file(filename, page=p, body=b)
+i.preview(filename)
+
+```
+
+
+
+
 
 `enjoi!`
