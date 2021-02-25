@@ -64,7 +64,7 @@ pip install pywpb
          * [Description List](#Description-List)
       * [Frames](#Frames)
       * [Building Forms](#Building-Forms)
-      * [Building TABs](#Buildind-TABs)
+      * [Building TABs](#Building-TABs)
   4. [wpIO (web page input and output)](#wpIO-(web-page-input-and-output))
       * [Print Page](#Print-Page)
       * [Load File](#Load-File)
