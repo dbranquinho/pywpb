@@ -572,7 +572,12 @@ p = wpb.header('en')
 b = wpb.body()
 i = wpb.wpIO()
 
-
+b.w_tabs(title_tab='My TAB',
+         text_tab='This is my tab, click on the tab to show text',
+         tab_name=['Tab1','Business','New Tab'],
+         text_tab_name=['You can write here anything, other HTML commands or links and texts',
+                        'The number of tab_name must be the same text_tab_name',
+                        'For example, this tab is the sane of the New Tab in tab_name
 
 i.write_file(filename, page=p, body=b)
 i.preview(filename)
