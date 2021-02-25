@@ -1,0 +1,5 @@
+    </div>
+    <div id="{{tab_name}}" class="tabcontent">
+      <h3>{{tab_name}}</h3>
+      <p>{{text_tab_name}}</p>
+    </div>

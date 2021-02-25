@@ -407,6 +407,39 @@ class body:
         
         self.body = self.body + self.form_tag
 
+    def w_tabs(self, title_tab='none', text_tab='none', tab_name='none', text_tab_name='none'):
+        if title_tab == 'none':
+            raise ValueError('No title_tab was provided, I need one')
+        if text_tab == 'none':
+            raise ValueError('No text_tab was provided, I need one')
+        if tab_name == 'none':
+            raise ValueError('No tab_name was provided, I need one')
+        if text_tab_name == 'none':
+            raise ValueError('No text_tab_name was provided, I need one')
+        
+        if len(tab_name) != len(text_tab_name):
+            raise ValueError('Different size between tab_name and Text_tab_name')
+
+        self.tab_tag = wpIO.read_template(self, 'tab1')
+        self.tab_tag = self.tab_tag.replace('{{title_tab}}', title_tab) 
+        self.tab_tag = self.tab_tag.replace('{{text_tab}}', text_tab) 
+        self.body = self.body + self.tab_tag
+
+        for i in range(len(tab_name)):
+            self.tab_tag = wpIO.read_template(self, 'tab2')
+            self.tab_tag = self.tab_tag.replace('{{tab_name}}', tab_name[i]) 
+            self.body = self.body + self.tab_tag
+
+        for i in range(len(tab_name)):
+            self.tab_tag = wpIO.read_template(self, 'tab3')
+            self.tab_tag = self.tab_tag.replace('{{tab_name}}', tab_name[i]) 
+            self.tab_tag = self.tab_tag.replace('{{text_tab_name}}', text_tab_name[i]) 
+            self.body = self.body + self.tab_tag
+
+        self.tab_tag = wpIO.read_template(self, 'tab4')
+        self.body = self.body + self.tab_tag
+
+
 class wpIO:
 
     def __init__(self):
@@ -441,8 +474,6 @@ class wpIO:
             text_file = open(filepath,"r")
         except:
             raise ValueError('Template not found!!!')
-
-        print('[' + file_read + ']')
 
         Lines = text_file.readlines()
         str = ""

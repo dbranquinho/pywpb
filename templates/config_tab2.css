@@ -1,0 +1,1 @@
+        <button class="tablinks" onclick="openTab(event, '{{tab_name}}')">{{tab_name}}</button>

@@ -4,7 +4,7 @@
 
 HTML `Creator` using `Python`
 
-![](https://img.shields.io/badge/pypi-0.1.12-blue)![](https://img.shields.io/badge/python-3.7|3.8|3.9-lightblue)![](https://img.shields.io/badge/Licence-MIT-lightgray)![](https://img.shields.io/badge/status-alpha-orange)![](https://img.shields.io/badge/pipeline-passed-green)![](https://img.shields.io/badge/testing-passing-green)
+![](https://img.shields.io/badge/pypi-0.1.13-blue)![](https://img.shields.io/badge/python-3.7|3.8|3.9-lightblue)![](https://img.shields.io/badge/Licence-MIT-lightgray)![](https://img.shields.io/badge/status-alpha-orange)![](https://img.shields.io/badge/pipeline-passed-green)![](https://img.shields.io/badge/testing-passing-green)
 
 
 **Main Features:**
@@ -21,6 +21,7 @@ HTML `Creator` using `Python`
 - Create Frames easily
 - Ordered and Unordered and description lists in one command line
 - Building Forms with one line command
+- TABs are the greate way to show many subjects
 
 ## Where to use
     
@@ -63,6 +64,7 @@ pip install pywpb
          * [Description List](#Description-List)
       * [Frames](#Frames)
       * [Building Forms](#Building-Forms)
+      * [Building TABs](#Buildind-TABs)
   4. [wpIO (web page input and output)](#wpIO-(web-page-input-and-output))
       * [Print Page](#Print-Page)
       * [Load File](#Load-File)
@@ -557,7 +559,27 @@ i.preview(filename)
 |  form_sign_up |  Contact Forms | form_id + text + url_privacy + bus_name |
     
 
+#### **Building TABs**
 
+Tabs are perfect for single page web applications, or for web pages capable of displaying different subjects.
+
+```python
+from pywpb import pywpb as wpb
+
+filename = 'test'
+
+p = wpb.header('en')
+b = wpb.body()
+i = wpb.wpIO()
+
+
+
+i.write_file(filename, page=p, body=b)
+i.preview(filename)
+
+```
+
+![My TAB Example](https://github.com/dbranquinho/pywpb/raw/master/readme_files/mytab.png)
 
 <BR>
 <hr>
