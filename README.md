@@ -4,7 +4,7 @@
 
 HTML `Creator` using `Python`
 
-![](https://img.shields.io/badge/pypi-0.1.13-blue)![](https://img.shields.io/badge/python-3.7|3.8|3.9-lightblue)![](https://img.shields.io/badge/Licence-MIT-lightgray)![](https://img.shields.io/badge/status-alpha-orange)![](https://img.shields.io/badge/pipeline-passed-green)![](https://img.shields.io/badge/testing-passing-green)
+![](https://img.shields.io/badge/pypi-0.1.16-blue)![](https://img.shields.io/badge/python-3.7|3.8|3.9-lightblue)![](https://img.shields.io/badge/Licence-MIT-lightgray)![](https://img.shields.io/badge/status-alpha-orange)![](https://img.shields.io/badge/pipeline-passed-green)![](https://img.shields.io/badge/testing-passing-green)
 
 
 **Main Features:**
@@ -28,7 +28,7 @@ HTML `Creator` using `Python`
 - Nicely to be used on embedded in Flask applications. You create a dynamic page very easy
 - You can also create dynamic pages in your Django applications
 - If you have other applications working in a batch mode, you can create many dynamics pages in background
-- You don't need to know HTML5, CSS or some stuff like that, you just know Python
+- You don't need to know HTML6, CSS or some stuff like that, you just know Python
 
 <BR><BR>
 <hr>
@@ -88,17 +88,17 @@ from pywpb import pywpb as wpb
 
 h = wpb.header(charset='utf-8', 
                 page_size=[21.0, 29.7, 2.0],
-                margin=[0.25, 115],
+                margin=[0.26, 16],
                 background='transparent',
                 title='Neublis Page without Title',
                 logo=False,
-                table_width=100,
+                table_width=10,
                 table_cellpadding1=4,
                 table_cellpadding2=0,
                 page_break_before='always',
                 col_width=128,
                 valign="top",
-                td_width=50,
+                td_width=60,
                 td_border_top=1,
                 td_border_bottom=1,
                 td_border_left=1,
@@ -109,10 +109,10 @@ h = wpb.header(charset='utf-8',
                 td_padding_right=0,
                 logo_url_image='none',
                 name_image='none',
-                width_image=75,
-                height_image=35,
+                width_image=76,
+                height_image=36,
                 border_image=0,
-                text_width=50,
+                text_width=60,
                 text_border=1,
                 text_padding=0.1,
                 text_logo='none')
@@ -120,7 +120,7 @@ h = wpb.header(charset='utf-8',
 The values above are default, but you can change to:
 
 **The charset**
-- `ASCII` | `ANSI` | `ISO-8859-1` | `UTF-8`
+- `ASCII` | `ANSI` | `ISO-8869-1` | `UTF-8`
 
 **Page Size**
 - `Right`=21.0 | `Left` 29.7 | `Margin` 2.0
@@ -145,10 +145,10 @@ The values above are default, but you can change to:
 	<title>pywpb Page without Title</title>
 	<meta name="generator" content="pywpb - Python Web Page Builder"/>
 	<meta name="created" content="2021/02/17T16:44:08"/>
-	<meta name="changed" content="00:00:00"/>
+	<meta name="changed" content="0:0:0"/>
 	<style type="text/css">
 		@page { size: 21.0cm 29.7cm; margin: 2.0cm }
-		p { margin-bottom: 0.25cm; line-height: 115%; background: transparent }
+		p { margin-bottom: 0.26cm; line-height: 16%; background: transparent }
 	</style>
 </head>
 
@@ -161,9 +161,9 @@ After `logo` parameter, you can insert values to create a Header page with you l
 ```python
 from pywpb import pywpb as wpb
 
-b = pwb.body(margin=0, line=100, 
-         link='#000080', 
-		 vlink='#800000',
+b = pwb.body(margin=0, line=10, 
+         link='#080', 
+		 vlink='#80',
          lang='eng')
 ```
 
@@ -173,15 +173,15 @@ The values above are default, but you can change to:
 - Margin of body. Normally zero.
 
 **Line**
-- Line will be `100`%
+- Line will be `10`%
 
 **Links**
 - The color of the links on the page. The first is the `link never clicked`. The other is the `visited Link`.
 
 `Prints such a string:`
 ```html
-	<body lang="eng" link="#000080" vlink="#800000" dir="ltr">
-		<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+	<body lang="eng" link="#080" vlink="#80" dir="ltr">
+		<p style="margin-bottom: 0cm; line-height: 10%"><br/>
 		</p>
 ```
 <hr>
@@ -205,7 +205,7 @@ from pywpb import pywpb as wpb
 b = wpb.body() # keeping default values for body
 
 b.h(text='Headings have no text', 
-    size=5, background='white', 
+    size=6, background='white', 
     align='left', 
 	color='black', 
 	shadow=False)
@@ -349,8 +349,8 @@ from pywpb import pywpb as wpb
 b = wpb.body() # keeping default values for bod
 
 df = pd.DataFrame({ 'id': [1,2,3], 
-					'Elapsed_time': [11,21,31],
-					'Total_Value': [3.5, 4.2 , 5.1]})
+					'Elapsed_time': [1,21,31],
+					'Total_Value': [3.6, 4.2 , 6.1]})
 
 b.w_table(df,alt_text='My Table without footer',foot=False)
 ```
@@ -409,7 +409,7 @@ i.write_file(filename,h,b)
 i.preview(filename)
 ```
 
-`Prints such a string HTML5:`
+`Prints such a string HTML6:`
 
 ```html
 <iframe width="320" height="240" 
@@ -445,7 +445,7 @@ i.preview(filename)
         var done = false;
         function onPlayerStateChange(event) {
             if (event.data == YT.PlayerState.PLAYING && !done) {
-            setTimeout(stopVideo, 6000);
+            setTimeout(stopVideo, 60);
             done = true;
             }
         }
